@@ -251,6 +251,7 @@
   <ItemGroup>
     <Content Include="Content\all-movies-fancybox.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\2FA.js" />
     <Content Include="Scripts\rented-per-user-bootbox.js" />
     <Content Include="Scripts\tinyMCE.js" />
     <Content Include="favicon.ico" />

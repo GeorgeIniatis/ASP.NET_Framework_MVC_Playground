@@ -3,67 +3,103 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        <dt>Phone Number:</dt>
-        <dd>
-            @(Model.PhoneNumber ?? "None") [
-            @if (Model.PhoneNumber != null)
-            {
-                @Html.ActionLink("Change", "AddPhoneNumber")
-                @: &nbsp;|&nbsp;
-                @Html.ActionLink("Remove", "RemovePhoneNumber")
-            }
-            else
-            {
-                @Html.ActionLink("Add", "AddPhoneNumber")
-            }
-            ]
-        </dd>
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            @if (Model.TwoFactor)
-            {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto col-12">
+                <h1 class="text-left">Account Settings</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mx-auto col-lg-6 col-10">
+                <h2 class="text-left border-bottom pb-2"><b>Profile</b></h2>
+            </div>
+            <div class="mx-auto col-lg-6 col-10"></div>
+        </div>
+        <div class="row my-2">
+            <div class="mx-auto col-lg-6 col-10">
+                <h4 class="text-left">Phone Number</h4>
+            </div>
+            <div class="mx-auto col-lg-6 col-10 text-left">
+                @if (Model.PhoneNumber != null)
                 {
-                    @Html.AntiForgeryToken()
-                    <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                    </text>
+                    <a class="btn btn-primary m-1" href=@Url.Action("AddPhoneNumber","Manage")>Change Phone Number</a>
+                    <a class="btn btn-danger m-1" href=@Url.Action("RemovePhoneNumber","Manage")>Remove Phone Number</a>
                 }
-            }
-            else
-            {
-                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                else
                 {
-                    @Html.AntiForgeryToken()
-                    <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                    </text>
+                    <a class="btn btn-primary m-1" href=@Url.Action("AddPhoneNumber","Manage")>Add Phone Number</a>
                 }
-            }
-        </dd>
-    </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mx-auto col-lg-6 col-10">
+                <h2 class="text-left border-bottom pb-2"><b>Security</b></h2>
+            </div>
+            <div class="mx-auto col-lg-6 col-10"></div>
+        </div>
+        <div class="row my-2">
+            <div class="mx-auto col-lg-6 col-10">
+                <h4 class="text-left">Password</h4>
+            </div>
+            <div class="mx-auto col-lg-6 col-10 text-left">
+                @if (Model.HasPassword)
+                {
+                    <a class="btn btn-primary m-1" href=@Url.Action("ChangePassword","Manage")>Change Password</a>
+                }
+                else
+                {
+                    <a class="btn btn-primary m-1" href=@Url.Action("SetPassword","Manage")>Create Password</a>
+                }
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="mx-auto col-lg-6 col-10">
+                <h4 class="text-left">External Logins</h4>
+            </div>
+            <div class="mx-auto col-lg-6 col-10 text-left">
+                <a class="btn btn-primary m-1" href=@Url.Action("ManageLogins","Manage")>Manage</a>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="mx-auto col-lg-6 col-10">
+                <h4 class="text-left">Two Factor Authentication</h4>
+            </div>
+            <div class="mx-auto my-auto col-lg-6 col-10 text-left">
+                @if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", 
+                                                                                                             role = "form",
+                                                                                                             @id = "DisableTwoFactorAuthentication"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="custom-control custom-switch m-1">
+                            <input type="checkbox" class="custom-control-input" id="2FA-Switch-Checked" checked>
+                            <label class="custom-control-label text-success" for="2FA-Switch-Checked"><b>2FA Enabled</b></label>
+                        </div>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", 
+                                                                                                            role = "form", 
+                                                                                                            @id = "EnableTwoFactorAuthentication" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="custom-control custom-switch m-1">
+                            <input type="checkbox" class="custom-control-input" id="2FA-Switch-Unchecked">
+                            <label class="custom-control-label text-danger" for="2FA-Switch-Unchecked"><b>2FA Disabled</b></label>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/2FA.js")
+
+}
