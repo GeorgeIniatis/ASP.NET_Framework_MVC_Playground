@@ -1,0 +1,111 @@
+﻿@model ASP.NET_Framework_MVC_Playground.ViewModels.MovieImageViewModel
+
+@{
+    ViewBag.Title = "Add Movie";
+}
+
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto col-lg-6 col-10">
+                <h1>Add Movie</h1>
+                <hr />
+                @{
+                    using (Html.BeginForm("AddMovie", "Movies", FormMethod.Post, new { @class = "text-left", role = "form", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Movie.Movie_Name, new { @class = "form-control", @placeholder = "Movie Name" })
+                            @Html.ValidationMessageFor(m => m.Movie.Movie_Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Helper Variables -->
+                            <input type="hidden" id="isFileUploaded">
+                            <input type="hidden" name="imgX1" id="imgX1" />
+                            <input type="hidden" name="imgY1" id="imgY1" />
+                            <input type="hidden" name="imgWidth" id="imgWidth" />
+                            <input type="hidden" name="imgHeight" id="imgHeight" />
+                            <input type="hidden" name="imgCropped" id="imgCropped" />
+                            <!-- Dropzone -->
+                            <div class="image-dropzone text-center dropzone form-control h-auto" id="image-dropzone"
+                                 style="background-color: #f7e6e6;
+                                            border: dashed 3px;
+                                            border-color: red;
+                                            border-radius: 25px;">
+                                <div class="row pt-2 w-25 mx-auto">
+                                    <div class="col-12">
+                                        <i class="fa fa-solid fa-file-image fa-4x"></i>
+                                    </div>
+                                </div>
+                                <div class="row pt-2 w-50 mx-auto">
+                                    <div class="col-12">
+                                        <b><b> Drop your Poster here</b></b>
+                                    </div>
+                                </div>
+                                <div class="row w-25 mx-auto">
+                                    <div class="col-12">
+                                        <b class="bold-text" style="color: grey;"><b> or </b></b>
+                                    </div>
+                                </div>
+                                <div class="row pt-2 w-50 mx-auto">
+                                    <div class="col-12">
+                                        <b class="upload-button" style="background-color: red;
+                                                                            border: none;
+                                                                            border-radius: 15px;
+                                                                            color: white;
+                                                                            padding: 10px 20px;
+                                                                            text-align: center;
+                                                                            font-size: 14px;">
+                                            UPLOAD FILE
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="images" style="display: none">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 class="">Uploaded Image</h2>
+                                    <img src="" id="UploadedImage">
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="">Cropped Image</h2>
+                                    <canvas id="Canvas" class="img-fluid d-block"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="CropButton" style="display: none" class="btn btn-warning">Crop</button>
+                        <button type="submit" id="SubmitButton" class="btn btn-primary">Create Now</button>
+                        <a href=@Url.Action("All", "Movies") class="btn btn-primary">Back to List</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <!-- Form Evaluation -->
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Dropzone & Jcrop -->
+    @Scripts.Render("~/Scripts/add-movie-dropzone.js")
+
+    @if (ViewBag.Status == "Movie added successfully!")
+    {
+        <script>
+            SuccessBootbox("@ViewBag.Status", "@Url.Action("AddMovie","Movies")", "@Url.Action("All","Movies")");
+        </script>
+    }
+    else
+    {
+        <script>
+            FailureBootbox("@ViewBag.Status", "@Url.Action("AddMovie","Movies")");
+        </script>
+    }
+}

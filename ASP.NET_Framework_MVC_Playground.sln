@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A0D85E5-4BE9-453A-BFDF-138371CEA15C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET_Framework_MVC_Playground", "ASP.NET_Framework_MVC_Playground\ASP.NET_Framework_MVC_Playground.csproj", "{064027B8-A025-4AD9-BB8F-8A923C5A8EDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{064027B8-A025-4AD9-BB8F-8A923C5A8EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064027B8-A025-4AD9-BB8F-8A923C5A8EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064027B8-A025-4AD9-BB8F-8A923C5A8EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064027B8-A025-4AD9-BB8F-8A923C5A8EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5564F6C-E87C-4295-BFD5-BD13289F0F41}
+	EndGlobalSection
+EndGlobal

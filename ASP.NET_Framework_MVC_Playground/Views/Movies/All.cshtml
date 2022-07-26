@@ -1,0 +1,188 @@
+﻿@model IEnumerable<ASP.NET_Framework_MVC_Playground.Models.Data.Movie>
+@using WebApplication1.Properties
+
+@{
+    ViewBag.Title = @MoviesListPage.MoviesListPageTitle;
+}
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="">Movies List</h1>
+                @{
+                    if (Context.User.IsInRole("Admin"))
+                    {
+                        <a href=@Url.Action("AddMovie", "Movies") class="btn btn-primary">Add Movie</a>
+                    }
+                }
+                <hr>
+            </div>
+        </div>
+        @{
+            if (Model.Count() != 0)
+            {
+                int index = 0;
+                while (index != Model.Count())
+                {
+                    var item = Model.ElementAt(index);
+                    if (index % 2 == 0)
+                    {
+                        <div class="row pb-3">
+                            <!-- First card -->
+                            <div class="col-6 col-md-6">
+                                <div class="card md-3">
+                                    <div class="row no-gutters">
+                                        <!-- Image -->
+                                        <div class="col-md-4">
+                                            <a data-fancybox="gallery"
+                                               data-caption="@Html.DisplayFor(modelItem => item.Movie_Name)"
+                                               href="@Url.Action("getImg", "Movies", new { movieID = item.MovieID })">
+                                               <img class="card-img rounded" src="@Url.Action("getImg", "Movies", new { movieID = item.MovieID })" width="250" height="250"/>
+                                            </a>
+                                        </div>
+                                        <!-- Body -->
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h4 class="card-title">@Html.DisplayFor(modelItem => item.Movie_Name)</h4>
+                                                @if (item.TinyMCE != null)
+                                                {
+                                                    <div class="card-text">
+                                                        @Html.Raw(item.TinyMCE)
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <p class="card-text"> No description has been added yet for this movie</p>
+                                                }
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        @{
+                                                            if (Context.User.IsInRole("Admin"))
+                                                            {
+                                                                <a href=@Url.Action("EditMovieDetails", "Movies", new { id = item.MovieID }) class="btn btn-primary m-1">Edit Description</a>
+                                                            }
+
+                                                            if (ViewBag.rentedMovies == null)
+                                                            {
+                                                                <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary m-1">Rent Now</a>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                var found = false;
+                                                                foreach (var movie in ViewBag.rentedMovies)
+                                                                {
+                                                                    if (item.Movie_Name == movie)
+                                                                    {
+                                                                        found = true;
+                                                                        <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary disabled m-1">Already Rented</a>
+                                                                    }
+                                                                }
+                                                                if (found == false)
+                                                                {
+                                                                    <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary m-1">Rent Now</a>
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @{
+                                index++;
+                                if (index == Model.Count())
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    item = Model.ElementAt(index);
+                                    <!-- Second card -->
+                                    <div class="col-6 col-md-6">
+                                        <div class="card md-3">
+                                            <div class="row no-gutters">
+                                                <!-- Image -->
+                                                <div class="col-md-4">
+                                                    <a data-fancybox="gallery"
+                                                       data-caption="@Html.DisplayFor(modelItem => item.Movie_Name)"
+                                                       href="@Url.Action("getImg", "Movies", new { movieID = item.MovieID} )">
+                                                        <img class="card-img rounded" src="@Url.Action("getImg", "Movies", new { movieID = item.MovieID})" width="250" height="250"/>
+                                                    </a>
+                                                </div>
+                                                <!-- Body -->
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.Movie_Name)</h4>
+                                                        @if (item.TinyMCE != null)
+                                                        {
+                                                            <div class="card-text">
+                                                                @Html.Raw(item.TinyMCE)
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p class="card-text"> No description has been added yet for this movie</p>
+                                                        }
+                                                        @{
+                                                            if (Context.User.IsInRole("Admin"))
+                                                            {
+                                                                <a href=@Url.Action("EditMovieDetails", "Movies", new { id = item.MovieID }) class="btn btn-primary m-1">Edit Description</a>
+                                                            }
+
+                                                            if (ViewBag.rentedMovies == null)
+                                                            {
+                                                                <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary m-1">Rent Now</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                var found = false;
+                                                                foreach (var movie in ViewBag.rentedMovies)
+                                                                {
+                                                                    if (item.Movie_Name == movie)
+                                                                    {
+                                                                        found = true;
+                                                                        <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary disabled m-1">Already Rented</a>
+
+                                                                    }
+                                                                }
+                                                                if (found == false)
+                                                                {
+                                                                    <a href=@Url.Action("Rent", "Movies", new { movieID = item.MovieID }) class="btn btn-primary m-1">Rent Now</a>
+                                                                }
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }                                              
+                    index++;
+                }
+            }
+            else
+            {
+                <h1> No movies available!</h1>
+            }
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    @Styles.Render("~/Content/all-movies-fancybox.css")
+}
+
+
+
+
+

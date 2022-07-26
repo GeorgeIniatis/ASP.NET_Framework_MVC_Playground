@@ -1,0 +1,81 @@
+﻿@model ASP.NET_Framework_MVC_Playground.ViewModels.RentedPerUserViewModel
+
+@{
+    ViewBag.Title = "RentedPerUser";
+}
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="">Search the Rented Movies of Users</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                @{
+                    if (Model.SelectedEmail_UserID == null)
+                    {
+                        using (Html.BeginForm())
+                        {
+                            <div class="form-group">
+                                @Html.Label("Please select a user:", new { @class = "d-inline-block" })
+                                @Html.DropDownListFor(x => x.SelectedEmail_UserID, Model.UserIDs, "-", new { @id = "UserDropdown", @class = "form-control form-control sm d-inline-block w-auto" })
+                                @Html.AntiForgeryToken()
+
+                            </div>
+                            <button id="SubmitButton" type="submit" class="btn btn-primary">Search</button>
+                        }
+                    }
+                    else
+                    {
+                        if (Model.RentedMovies.Count != 0)
+                        {
+                            <h4> User: @Model.SelectedEmail </h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Movie</th>
+                                            <th scope="col">Rented Date & Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (KeyValuePair<string, DateTime> entry in Model.RentedMovies)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <h4> @Html.DisplayFor(modelItem => entry.Key) </h4>
+                                                </td>
+                                                <td>
+                                                    <h4> @Html.DisplayFor(modelItem => entry.Value) </h4>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <h4> The selected user @Model.SelectedEmail has not rented any movies! </h4>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/rented-per-user-bootbox.js")
+}
+
+
+
+
+

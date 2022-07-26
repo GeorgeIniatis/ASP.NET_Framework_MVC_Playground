@@ -1,0 +1,36 @@
+﻿@model ASP.NET_Framework_MVC_Playground.Models.Data.Movie
+
+@{
+    ViewBag.Title = "Edit Movie Details";
+}
+
+<h2>Edit Movie Details</h2>
+
+@using (Html.BeginForm("EditMovieDetails", "Movies", FormMethod.Post, new { name = "editDetailsForm", id = "editDetailsForm" }))
+{
+    <textarea id="TinyTextArea"></textarea>
+    <input type="hidden" name="MovieID" value=@Model.MovieID />
+    <input type="hidden" name="TinyMCE" id="TinyMCE" />
+    @Html.AntiForgeryToken()
+    <input id="SubmitButton" type="submit" value="Submit" />
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/tinyMCE.js")
+    @{
+        if (Model.TinyMCE != null)
+        {
+            <script>
+                tinyTextArea(@Html.Raw(Json.Encode(Model.TinyMCE)));
+            </script>
+        }
+        else
+        {
+            <script>
+                tinyTextArea("Create your new page!");
+            </script>
+        }
+    }
+}
+

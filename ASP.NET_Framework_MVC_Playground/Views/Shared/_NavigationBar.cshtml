@@ -1,0 +1,40 @@
+﻿
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar12">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar12">
+            <a class="navbar-brand d-none d-md-block" href=@Url.Action("index","Movies")>
+                <i class="fa d-inline fa-lg fa-flask"></i>
+                <b class="text-justify"> ASP.NET Framework Playground </b>
+            </a>
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Links available to everyone -->
+                <li class="nav-item"><a class="nav-link" href=@Url.Action("Random","Movies")>Random Movie</a></li>
+                @*<li class="nav-item"><a class="nav-link" href=@Url.Action("MovieArguments","Movies")>Using Arguments</a></li>*@
+                @{
+                    if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link" href=@Url.Action("All","Movies")>Movies</a></li>
+                        <li class="nav-item"><a class="nav-link" href=@Url.Action("Rented","Movies")>Rented Movies</a></li>
+
+                        if (Context.User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href=@Url.Action("AddMovie","Movies")>Add Movie</a>
+                                    <a class="dropdown-item" href=@Url.Action("RentedPerUser","Movies")>Search Rented Movies</a>
+                                    <a class="dropdown-item" href=@Url.RouteUrl("Localization")>Localization Admin</a>
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+                @Html.Partial("_LoginPartial")
+            </ul>
+        </div>
+    </div>
+</nav>

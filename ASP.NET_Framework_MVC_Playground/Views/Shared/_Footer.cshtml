@@ -1,0 +1,40 @@
+﻿@using System.Globalization
+
+@{
+    CultureInfo[] cultures = { CultureInfo.GetCultureInfo("el-GR"), 
+                               CultureInfo.GetCultureInfo("en-GB"),
+                               CultureInfo.GetCultureInfo("en-US")};
+
+    List<SelectListItem> cultureItems = new List<SelectListItem>();
+
+    foreach (CultureInfo culture in cultures)
+    {
+        bool selected = false;
+        if (culture.IetfLanguageTag == System.Threading.Thread.CurrentThread.CurrentCulture.IetfLanguageTag)
+        {
+            selected = true;
+        }
+        cultureItems.Add(new SelectListItem { Text = culture.NativeName, Value = culture.IetfLanguageTag, Selected = selected });
+    }
+}
+
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("ChangeCulture", "Base", FormMethod.Get, new { name = "cultureForm", id = "cultureForm" }))
+                {
+                    <div class="form-group">
+                        @Html.Label("Language & Culture:", new { @class = "d-inline-block" })
+                        @Html.DropDownList("cultureChosen", cultureItems, "-", new { @onchange = "document.forms['cultureForm'].submit();", @class = "form-control form-control sm d-inline-block w-auto" })
+                    </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <p class="mb-0 py-1">© 2022 ASP.NET Framework Playground. All rights reserved</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

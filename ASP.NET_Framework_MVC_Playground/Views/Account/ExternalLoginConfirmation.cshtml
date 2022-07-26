@@ -1,0 +1,42 @@
+﻿@model ASP.NET_Framework_MVC_Playground.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto col-lg-6 col-10">
+                <h1>Register</h1>
+                <p class="mb-3">You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>. Please enter the following information to finish registration.</p>
+                <hr />
+                @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "text-left", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                   
+                    <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

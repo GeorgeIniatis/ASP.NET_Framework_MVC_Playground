@@ -1,0 +1,83 @@
+﻿@model ASP.NET_Framework_MVC_Playground.Models.Data.Movie
+
+@{
+    ViewBag.Title = "Random Movie";
+}
+
+@{
+    if (Model == null)
+    {
+        <h1> No movies available!</h1>
+    }
+    else
+    {
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="">Random Movie Chosen</h1>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card md-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src=@Url.Action("getImg", "Movies", new { movieID = Model.MovieID }) class="card-img rounded" width="250" height="250">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title">@Model.Movie_Name</h4>
+                                        @if (Model.TinyMCE != null)
+                                        {
+                                            <div class="card-text">
+                                                @Html.Raw(Model.TinyMCE)
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <p class="card-text"> No description has been added yet for this movie</p>
+                                        }
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            if (ViewBag.rentedMovies == null)
+                                            {
+                                                <a href=@Url.Action("Rent", "Movies", new { movieID = Model.MovieID }) class="btn btn-primary">Rent Now</a>
+                                            }
+                                            else
+                                            {
+                                                var found = false;
+                                                foreach (var movie in ViewBag.rentedMovies)
+                                                {
+                                                    if (Model.Movie_Name == movie)
+                                                    {
+                                                        found = true;
+                                                        <a href=@Url.Action("Rent", "Movies", new { movieID = Model.MovieID }) class="btn btn-primary disabled">Already Rented</a>
+                                                    }
+                                                }
+                                                if (found == false)
+                                                {
+                                                    <a href=@Url.Action("Rent", "Movies", new { movieID = Model.MovieID }) class="btn btn-primary">Rent Now</a>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a href=@Url.Action("Login", "Account") class="btn btn-primary">Rent Now</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
+
+

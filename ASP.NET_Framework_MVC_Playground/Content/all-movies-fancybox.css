@@ -1,0 +1,16 @@
+﻿
+/* Zoom is only enabled if picture is large enough*/
+
+/* Change Curson Icon*/
+a[data-fancybox] img {
+    cursor: zoom-in;
+}
+
+/* Caption On Top*/
+.fancybox__slide {
+    flex-direction: column-reverse;
+}
+
+.fancybox__caption {
+    padding: 0 0 1rem 0;
+}

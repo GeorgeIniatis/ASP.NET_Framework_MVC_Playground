@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class= "form-inline"}))
+    {
+        @Html.AntiForgeryToken()
+        <li class="nav-item"> <a class="nav-link text-secondary" href=@Url.Action("Index","Manage")>Hello @(((ClaimsIdentity)User.Identity).FindFirstValue("FirstName"))!</a> </li>
+        <li class="nav-item"> <a class="nav-link text-secondary" href="javascript:document.getElementById('logoutForm').submit()")>Log out</a> </li>
+    }
+}
+else
+{
+    <li class="nav-item"> <a class="nav-link text-secondary" href=@Url.Action("Register","Account")>Register</a> </li>
+    <li class="nav-item"> <a class="nav-link text-secondary" href=@Url.Action("Login","Account")>Log in</a> </li>
+}
