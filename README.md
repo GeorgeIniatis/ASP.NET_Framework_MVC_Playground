@@ -85,3 +85,9 @@ our data and identity databases
 Username: admin@site.com
 Password: test1234%^#
 ```
+
+6. Disclaimer
+
+**The SMS service will definetely not work. The system has been setup to only work with my number.**
+
+**The Email service may or may not work. What I would suggest is using a temp email.**
