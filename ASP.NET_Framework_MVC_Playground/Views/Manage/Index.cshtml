@@ -21,17 +21,30 @@
             <div class="mx-auto col-lg-6 col-10">
                 <h4 class="text-left">Phone Number</h4>
             </div>
-            <div class="mx-auto col-lg-6 col-10 text-left">
-                @if (Model.PhoneNumber != null)
-                {
+            @if (Model.PhoneNumber != null)
+            {
+                <div class="mx-auto col-lg-3 col-10 text-left">
                     <a class="btn btn-primary m-1" href=@Url.Action("AddPhoneNumber","Manage")>Change Phone Number</a>
-                    <a class="btn btn-danger m-1" href=@Url.Action("RemovePhoneNumber","Manage")>Remove Phone Number</a>
-                }
-                else
-                {
+                </div>
+                <div class="mx-auto col-lg-3 col-10 text-left">
+
+                    @using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new
+                    {
+                        @class = "form-horizontal",
+                        role = "form",
+                    }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-danger m-1" type="submit">Remove Phone Number</button>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="mx-auto col-lg-6 col-10 text-left">
                     <a class="btn btn-primary m-1" href=@Url.Action("AddPhoneNumber","Manage")>Add Phone Number</a>
-                }
-            </div>
+                </div> 
+            }
         </div>
         <div class="row">
             <div class="mx-auto col-lg-6 col-10">

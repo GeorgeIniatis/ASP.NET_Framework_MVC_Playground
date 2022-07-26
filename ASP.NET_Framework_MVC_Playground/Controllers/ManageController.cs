@@ -101,8 +101,18 @@ namespace ASP.NET_Framework_MVC_Playground.Controllers
 
         //
         // GET: /Manage/AddPhoneNumber
-        public ActionResult AddPhoneNumber()
+        public async Task<ActionResult> AddPhoneNumber()
         {
+            var userId = User.Identity.GetUserId();
+            string phoneNumber = await UserManager.GetPhoneNumberAsync(userId);
+            if (phoneNumber != null)
+            {
+                var model = new AddPhoneNumberViewModel
+                {
+                    Number = phoneNumber.Substring(4, phoneNumber.Length - 4)
+                };
+                return View(model);
+            }
             return View();
         }
 
