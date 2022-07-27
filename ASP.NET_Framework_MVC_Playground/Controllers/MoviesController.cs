@@ -111,10 +111,6 @@ namespace ASP.NET_Framework_MVC_Playground.Controllers
                     string base64 = Request.Form["imgCropped"];
                     byte[] bytes = Convert.FromBase64String(base64.Split(',')[1]);
 
-                    int? movieID = (from m in context.Movies
-                                    orderby m.MovieID descending
-                                    select m.MovieID).FirstOrDefault();
-
                     List<String> movieNames = (from m in context.Movies
                                                select m.Movie_Name).ToList();
 
@@ -123,7 +119,8 @@ namespace ASP.NET_Framework_MVC_Playground.Controllers
                         var movie = new Movie()
                         {
                             Movie_Name = model.Movie.Movie_Name,
-                            Movie_Image = bytes
+                            Movie_Image = bytes,
+                            Movie_Trailer_Link = model.Movie.Movie_Trailer_Link
 
                         };
                         context.Movies.Add(movie); // Only in the memory atm

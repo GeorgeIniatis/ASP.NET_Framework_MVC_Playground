@@ -15,14 +15,14 @@ namespace ASP.NET_Framework_MVC_Playground.Models.Data
             MovieCustomers = new HashSet<MovieCustomer>();
         }
 
-        [Display(Name = "MovieID", ResourceType = typeof(MovieModel))]
+        //[Display(Name = "MovieID", ResourceType = typeof(MovieModel))]
         public int MovieID { get; set; }
 
-        [Display(Name = "MovieName", ResourceType = typeof(MovieModel))]
-        [Required(ErrorMessageResourceName = "MovieNameIsRequired", ErrorMessageResourceType = typeof(MovieModel))]
+        //[Display(Name = "MovieName", ResourceType = typeof(MovieModel))]
+        //[Required(ErrorMessageResourceName = "MovieNameIsRequired", ErrorMessageResourceType = typeof(MovieModel))]
         public string Movie_Name { get; set; }
 
-        [Display(Name = "MovieImage", ResourceType = typeof(MovieModel))]
+        //[Display(Name = "MovieImage", ResourceType = typeof(MovieModel))]
         public byte[] Movie_Image { get; set; }
 
         //[Display(Name = "MovieTrailer", ResourceType = typeof(MovieModel))]

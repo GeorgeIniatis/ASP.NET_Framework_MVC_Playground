@@ -56,8 +56,8 @@ Dropzone.options.imageDropzone = { // camelized version of the `id`
 
                 bootbox.alert({
                     locale: locale,
-                    title: "Error",
-                    message: "Please upload a movie poster!",
+                    title: resources.Error,
+                    message: resources.PleaseUploadAMoviePoster,
                     backdrop: true
                 });
             }
@@ -80,8 +80,8 @@ Dropzone.options.imageDropzone = { // camelized version of the `id`
 
             bootbox.alert({
                 locale: locale,
-                title: "Error",
-                message: "Please upload a smaller image!",
+                title: resources.Error,
+                message: resources.PleaseUploadASmallerImage,
                 backdrop: true
             });
             $('#isFileUploaded').val('');
@@ -129,14 +129,14 @@ function SuccessBootbox(viewBagStatus, addAnotherLink, backToListLink) {
 
     bootbox.confirm({
         locale: locale,
-        title: "Success",
+        title: resources.Success,
         message: viewBagStatus,
         buttons: {
             confirm: {
-                label: 'Add Another',
+                label: resources.AddAnother,
             },
             cancel: {
-                label: 'Back to List',
+                label: resources.BackToList,
             }
         },
         callback: function (result) {
@@ -155,7 +155,7 @@ function FailureBootbox(viewBagStatus, tryAgainLink) {
 
     bootbox.alert({
         locale: locale,
-        title: "Error",
+        title: resources.Error,
         message: viewBagStatus,
         backdrop: true,
         callback: function (result) {

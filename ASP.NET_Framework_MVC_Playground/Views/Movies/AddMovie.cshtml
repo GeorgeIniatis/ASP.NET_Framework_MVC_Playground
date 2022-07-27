@@ -1,4 +1,5 @@
 ﻿@model ASP.NET_Framework_MVC_Playground.ViewModels.MovieImageViewModel
+@using WebApplication1.Properties
 
 @{
     ViewBag.Title = "Add Movie";
@@ -8,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto col-lg-6 col-10">
-                <h1>Add Movie</h1>
+                <h1>@AddMoviePage.AddMovie</h1>
                 <hr />
                 @{
                     using (Html.BeginForm("AddMovie", "Movies", FormMethod.Post, new { @class = "text-left", role = "form", enctype = "multipart/form-data" }))
@@ -17,8 +18,13 @@
                         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.Movie.Movie_Name, new { @class = "form-control", @placeholder = "Movie Name" })
+                            @Html.TextBoxFor(m => m.Movie.Movie_Name, new { @class = "form-control", @placeholder = AddMoviePage.MovieName })
                             @Html.ValidationMessageFor(m => m.Movie.Movie_Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Movie.Movie_Trailer_Link, new { @class = "form-control", @placeholder = AddMoviePage.MovieTrailerLink })
+                            @Html.ValidationMessageFor(m => m.Movie.Movie_Trailer_Link, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group">
@@ -42,12 +48,12 @@
                                 </div>
                                 <div class="row pt-2 w-50 mx-auto">
                                     <div class="col-12">
-                                        <b><b> Drop your Poster here</b></b>
+                                        <b> <b> @AddMoviePage.DropYourPosterHere </b> </b>
                                     </div>
                                 </div>
                                 <div class="row w-25 mx-auto">
                                     <div class="col-12">
-                                        <b class="bold-text" style="color: grey;"><b> or </b></b>
+                                        <b class="bold-text" style="color: grey;"> <b>  @AddMoviePage.Or </b>  </b>
                                     </div>
                                 </div>
                                 <div class="row pt-2 w-50 mx-auto">
@@ -59,7 +65,7 @@
                                                                             padding: 10px 20px;
                                                                             text-align: center;
                                                                             font-size: 14px;">
-                                            UPLOAD FILE
+                                            @AddMoviePage.UploadFile
                                         </b>
                                     </div>
                                 </div>
@@ -69,19 +75,19 @@
                         <div class="form-group" id="images" style="display: none">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h2 class="">Uploaded Image</h2>
+                                    <h2 class="">@AddMoviePage.UploadedImage</h2>
                                     <img src="" id="UploadedImage">
                                 </div>
                                 <div class="col-md-6">
-                                    <h2 class="">Cropped Image</h2>
+                                    <h2 class="">@AddMoviePage.CroppedImage</h2>
                                     <canvas id="Canvas" class="img-fluid d-block"></canvas>
                                 </div>
                             </div>
                         </div>
 
-                        <button id="CropButton" style="display: none" class="btn btn-warning">Crop</button>
-                        <button type="submit" id="SubmitButton" class="btn btn-primary">Create Now</button>
-                        <a href=@Url.Action("All", "Movies") class="btn btn-primary">Back to List</a>
+                        <button id="CropButton" style="display: none" class="btn btn-warning">@AddMoviePage.Crop</button>
+                        <button type="submit" id="SubmitButton" class="btn btn-primary"> @AddMoviePage.CreateNow </button>
+                        <a href=@Url.Action("All", "Movies") class="btn btn-primary"> @AddMoviePage.BackToList</a>
                     }
                 }
             </div>
