@@ -4,16 +4,27 @@
     ViewBag.Title = "Edit Movie Details";
 }
 
-<h2>Edit Movie Details</h2>
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto col-lg-6 col-10">
+                <h1>Edit Movie Details</h1>
+                <hr>
 
-@using (Html.BeginForm("EditMovieDetails", "Movies", FormMethod.Post, new { name = "editDetailsForm", id = "editDetailsForm" }))
-{
-    <textarea id="TinyTextArea"></textarea>
-    <input type="hidden" name="MovieID" value=@Model.MovieID />
-    <input type="hidden" name="TinyMCE" id="TinyMCE" />
-    @Html.AntiForgeryToken()
-    <input id="SubmitButton" type="submit" value="Submit" />
-}
+                @using (Html.BeginForm("EditMovieDetails", "Movies", FormMethod.Post, new { @class = "text-left", name = "editDetailsForm", id = "editDetailsForm" }))
+                {
+                    <div class="form-group">
+                        <textarea id="TinyTextArea"></textarea>
+                        <input type="hidden" name="MovieID" value=@Model.MovieID />
+                        <input type="hidden" name="TinyMCE" id="TinyMCE" />
+                        @Html.AntiForgeryToken()
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts
 {
@@ -28,7 +39,7 @@
         else
         {
             <script>
-                tinyTextArea("Create your new page!");
+                tinyTextArea("Please add a very short description for <b> @Model.Movie_Name </b>");
             </script>
         }
     }

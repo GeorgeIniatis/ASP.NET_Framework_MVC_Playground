@@ -1,6 +1,6 @@
 ## ASP.NET Framework MVC Playground
 
-This is just a playground site where multiple ASP.NET Framework and Javascript elements have been implemented as a way to get familiar with them.
+This is just a playground site where multiple ASP.NET Framework, Javascript and Bootstrap elements have been implemented as a way to get familiar with them.
 
 ### Running Site Locally
 

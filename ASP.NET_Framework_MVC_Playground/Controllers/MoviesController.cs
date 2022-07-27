@@ -25,6 +25,11 @@ namespace ASP.NET_Framework_MVC_Playground.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult EditMovieDetails(int id)
         {

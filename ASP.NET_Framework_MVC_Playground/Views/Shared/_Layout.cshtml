@@ -38,10 +38,10 @@
 </head>
 <body>
     @Html.Partial("_NavigationBar")
-    <div class="container body-content">
-        @RenderBody()
-        @Html.Partial("_Footer")
-        @RenderSection("scripts", required: false)
-    </div>
+
+    @RenderBody()
+    @Html.Partial("_Footer")
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
