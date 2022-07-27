@@ -1,3 +1,7 @@
+## ASP.NET Framework MVC Playground
+
+This is just a playground site where multiple ASP.NET Framework and Javascript elements have been implemented as a way to get familiar with them.
+
 ### Running Site Locally
 
 1. Create a `connections.config` file that holds two connection strings that will connect our site to
