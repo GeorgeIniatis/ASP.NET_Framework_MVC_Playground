@@ -65,9 +65,9 @@ our data and identity databases
 
 `enable-Migrations -ContextTypeName DataDbContext -MigrationsDirectory Models\Data\Migrations -Force`
 
-`add-migration -ConfigurationTypeName Identity_Authentication_Demo.Models.Data.Migrations.Configuration initialCreate`
+`add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration initialCreate`
 
-`update-database -ConfigurationTypeName Identity_Authentication_Demo.Models.Data.Migrations.Configuration`
+`update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration`
 
 4. Identity Migrations
 
@@ -75,9 +75,9 @@ our data and identity databases
 
 `enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Models\Identity\Migrations -Force`
 
-`add-migration -ConfigurationTypeName Identity_Authentication_Demo.Models.Identity.Migrations.Configuration initialCreate`
+`add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration initialCreate`
 
-`update-database -ConfigurationTypeName Identity_Authentication_Demo.Models.Identity.Migrations.Configuration`
+`update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration`
 
 5. Access Site
 

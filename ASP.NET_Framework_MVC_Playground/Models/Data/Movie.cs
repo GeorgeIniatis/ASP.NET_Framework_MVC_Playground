@@ -25,6 +25,9 @@ namespace ASP.NET_Framework_MVC_Playground.Models.Data
         [Display(Name = "MovieImage", ResourceType = typeof(MovieModel))]
         public byte[] Movie_Image { get; set; }
 
+        //[Display(Name = "MovieTrailer", ResourceType = typeof(MovieModel))]
+        public string Movie_Trailer_Link { get; set; }
+
         [AllowHtml]
         public string TinyMCE { get; set; }
         

@@ -223,9 +223,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LogHelper.cs" />
-    <Compile Include="Models\Data\Migrations\202207250644079_initialCreate.cs" />
-    <Compile Include="Models\Data\Migrations\202207250644079_initialCreate.Designer.cs">
-      <DependentUpon>202207250644079_initialCreate.cs</DependentUpon>
+    <Compile Include="Models\Data\Migrations\202207270749195_initialCreate.cs" />
+    <Compile Include="Models\Data\Migrations\202207270749195_initialCreate.Designer.cs">
+      <DependentUpon>202207270749195_initialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\Migrations\Configuration.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
@@ -2511,8 +2511,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Models\Data\Migrations\202207250644079_initialCreate.resx">
-      <DependentUpon>202207250644079_initialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Models\Data\Migrations\202207270749195_initialCreate.resx">
+      <DependentUpon>202207270749195_initialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Identity\Migrations\202207250645119_initialCreate.resx">
       <DependentUpon>202207250645119_initialCreate.cs</DependentUpon>

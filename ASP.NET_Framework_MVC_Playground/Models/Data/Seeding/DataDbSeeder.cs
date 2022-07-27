@@ -23,7 +23,8 @@ namespace ASP.NET_Framework_MVC_Playground.Models.Data.Seeding
                     Movie newMovie = new Movie()
                     {
                         Movie_Name = movie.Key,
-                        Movie_Image = Convert.FromBase64String((string)movie.Value)
+                        Movie_Image = Convert.FromBase64String((string)movie.Value.SelectToken("Image")),
+                        Movie_Trailer_Link = (string)movie.Value.SelectToken("Link")
                     };
                     context.Movies.AddOrUpdate(x => x.Movie_Name, newMovie);
                 }

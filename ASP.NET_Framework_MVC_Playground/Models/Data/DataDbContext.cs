@@ -78,6 +78,12 @@ namespace ASP.NET_Framework_MVC_Playground.Models.Data
                 .IsRequired();
 
             modelBuilder.Entity<Movie>()
+                .Property(m => m.Movie_Trailer_Link)
+                .HasColumnType("varchar")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            modelBuilder.Entity<Movie>()
                     .Property(m => m.TinyMCE)
                     .HasColumnType("varchar")
                     .HasMaxLength(2000);

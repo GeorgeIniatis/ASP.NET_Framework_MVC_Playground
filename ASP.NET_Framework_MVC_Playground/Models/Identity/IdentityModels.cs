@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Identity_Authentication_Demo.Models.Data;
+using ASP.NET_Framework_MVC_Playground.Models.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 

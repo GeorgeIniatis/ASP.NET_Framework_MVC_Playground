@@ -36,6 +36,7 @@ namespace ASP.NET_Framework_MVC_Playground.Models.Data.Migrations
                         MovieID = c.Int(nullable: false, identity: true),
                         Movie_Name = c.String(nullable: false, maxLength: 50, unicode: false),
                         Movie_Image = c.Binary(nullable: false),
+                        Movie_Trailer_Link = c.String(nullable: false, maxLength: 100, unicode: false),
                         TinyMCE = c.String(maxLength: 2000, unicode: false),
                     })
                 .PrimaryKey(t => t.MovieID);
