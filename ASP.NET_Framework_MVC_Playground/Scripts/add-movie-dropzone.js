@@ -52,7 +52,10 @@ Dropzone.options.imageDropzone = { // camelized version of the `id`
                 e.preventDefault();
                 e.stopPropagation();
 
+                var locale = $('#cultureChosen').val().substring(0, 2);
+
                 bootbox.alert({
+                    locale: locale,
                     title: "Error",
                     message: "Please upload a movie poster!",
                     backdrop: true
@@ -72,7 +75,11 @@ Dropzone.options.imageDropzone = { // camelized version of the `id`
         });
 
         wrapperThis.on("error", file => {
+
+            var locale = $('#cultureChosen').val().substring(0, 2);
+
             bootbox.alert({
+                locale: locale,
                 title: "Error",
                 message: "Please upload a smaller image!",
                 backdrop: true
@@ -117,7 +124,11 @@ function SetCoordinates(c) {
 };
 
 function SuccessBootbox(viewBagStatus, addAnotherLink, backToListLink) {
+
+    var locale = $('#cultureChosen').val().substring(0, 2);
+
     bootbox.confirm({
+        locale: locale,
         title: "Success",
         message: viewBagStatus,
         buttons: {
@@ -139,7 +150,11 @@ function SuccessBootbox(viewBagStatus, addAnotherLink, backToListLink) {
 };
 
 function FailureBootbox(viewBagStatus, tryAgainLink) {
+
+    var locale = $('#cultureChosen').val().substring(0, 2);
+
     bootbox.alert({
+        locale: locale,
         title: "Error",
         message: viewBagStatus,
         backdrop: true,

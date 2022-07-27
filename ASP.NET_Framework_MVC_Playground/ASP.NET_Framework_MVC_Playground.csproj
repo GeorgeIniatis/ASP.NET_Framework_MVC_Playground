@@ -249,6 +249,7 @@
     <Compile Include="ViewModels\RentedPerUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bootbox\bootbox.all.min.js" />
     <Content Include="Content\all-movies-fancybox.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\2FA.js" />
