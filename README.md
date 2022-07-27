@@ -90,7 +90,9 @@ Username: admin@site.com
 Password: test1234%^#
 ```
 
-6. Disclaimer
+6. Disclaimers
+
+**Only the Add Movie Admin Page has been setup fully for Localisation and Globalization but without the database table changing the locale will have almost no effect except showing the variable names used**
 
 **The SMS service will definetely not work. The system has been setup to only work with my number.**
 
