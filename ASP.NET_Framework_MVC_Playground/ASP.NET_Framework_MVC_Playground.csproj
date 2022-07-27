@@ -2490,7 +2490,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
-    <Content Include="Views\Movies\About.cshtml" />
     <Content Include="Views\Movies\All.cshtml" />
     <Content Include="Views\Movies\Rented.cshtml" />
     <Content Include="Views\Movies\RentedPerUser.cshtml" />
