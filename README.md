@@ -65,21 +65,19 @@ our data and identity databases
 
 **Delete Migrations Folder in Models\Data\**
 
-`enable-Migrations -ContextTypeName DataDbContext -MigrationsDirectory Models\Data\Migrations -Force`
-
-`add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration initialCreate`
-
-`update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration`
+```
+enable-Migrations -ContextTypeName DataDbContext -MigrationsDirectory Models\Data\Migrations -Force
+add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration initialCreate
+update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Data.Migrations.Configuration
+```
 
 4. Identity Migrations
 
-**Delete Migrations Folder in Models\Identity\**
-
-`enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Models\Identity\Migrations -Force`
-
-`add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration initialCreate`
-
-`update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration`
+```
+enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Models\Identity\Migrations -Force
+add-migration -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration initialCreate
+update-database -ConfigurationTypeName ASP.NET_Framework_MVC_Playground.Models.Identity.Migrations.Configuration
+```
 
 5. Access Site
 

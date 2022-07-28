@@ -6,6 +6,8 @@
 ASP.NET_Framework_MVC_Playground/Secrets.json
 ASP.NET_Framework_MVC_Playground/connections.config
 ASP.NET_Framework_MVC_Playground/Logs/
+ASP.NET_Framework_MVC_Playground/Models/Data/Migrations/
+ASP.NET_Framework_MVC_Playground/Models/Identity/Migrations/
 
 # User-specific files
 *.suo
