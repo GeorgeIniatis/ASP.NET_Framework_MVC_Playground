@@ -4,7 +4,7 @@ This is just a playground site where multiple ASP.NET Framework, Javascript and 
 
 ### Running Site Locally
 
-**Assuming you are using Visual Studio 2019**
+**Assuming you are using Visual Studio 2019 or Visual Studio 2022**
 
 1. Create a `connections.config` file that holds two connection strings that will connect our site to
 our data and identity databases
@@ -62,8 +62,6 @@ our data and identity databases
 ```
 
 3. Data Migrations
-
-**Delete Migrations Folder in Models\Data\**
 
 ```
 enable-Migrations -ContextTypeName DataDbContext -MigrationsDirectory Models\Data\Migrations -Force
