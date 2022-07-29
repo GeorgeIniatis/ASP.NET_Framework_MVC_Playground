@@ -224,11 +224,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LogHelper.cs" />
-    <Compile Include="Models\Data\Migrations\202207281627199_initialCreate.cs" />
-    <Compile Include="Models\Data\Migrations\202207281627199_initialCreate.designer.cs">
-      <DependentUpon>202207281627199_initialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Data\Migrations\Configuration.cs" />
+    <Compile Include="Models\Data\Migrations\**" />
+    <Compile Remove="Models\Data\Migrations\**" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Data\Customer.cs" />
     <Compile Include="Models\Data\DataDbContext.cs" />
@@ -238,11 +235,8 @@
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\Data\Movie.cs" />
     <Compile Include="Models\Data\MovieCustomer.cs" />
-    <Compile Include="Models\Identity\Migrations\202207281628292_initialCreate.cs" />
-    <Compile Include="Models\Identity\Migrations\202207281628292_initialCreate.designer.cs">
-      <DependentUpon>202207281628292_initialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Identity\Migrations\Configuration.cs" />
+    <Compile Include="Models\Identity\Migrations\**" />
+    <Compile Remove="Models\Identity\Migrations\**" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.cs" />
     <Compile Include="Startup.cs" />
@@ -2512,12 +2506,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Models\Data\Migrations\202207281627199_initialCreate.resx">
-      <DependentUpon>202207281627199_initialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\Identity\Migrations\202207281628292_initialCreate.resx">
-      <DependentUpon>202207281628292_initialCreate.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Data\Migrations\**"></EmbeddedResource>
+    <EmbeddedResource Remove="Models\Data\Migrations\**"></EmbeddedResource>
+    <EmbeddedResource Include="Models\Identity\Migrations\**"></EmbeddedResource>
+    <EmbeddedResource Remove="Models\Identity\Migrations\**"></EmbeddedResource>
     <EmbeddedResource Include="Properties\LocalizationForm.resx" />
   </ItemGroup>
   <PropertyGroup>
