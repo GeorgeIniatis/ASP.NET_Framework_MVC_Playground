@@ -92,6 +92,6 @@ Password: test1234%^#
 
 **Only the Add Movie Admin Page has been setup fully for Localisation and Globalization but without the database table changing the locale will have almost no effect except showing the variable names used**
 
-**The SMS service will definetely not work. The system has been setup to only work with my number.**
+**The SMS service will only work with number you have chosen during the set up of Sendgrid.**
 
 **The Email service may or may not work. What I would suggest is using a temp email.**
